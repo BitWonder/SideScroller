@@ -3,8 +3,7 @@ from os import system, name
 #use rand for sudo random number
 import random as rand
 #to move around
-from msvcrt import getch
-from types import NoneType
+from getch import getch
 
 def SC():
    if name == 'nt':
@@ -13,7 +12,7 @@ def SC():
       _ = system('clear')
 
 
-#the player // also stores the block their on to overide
+#the player // also stores the block their on to override
 class adventure:
    def __init__(self, xpos, ypos, color, shape, cooldown, onblock):
       self.xops = int(xpos)
@@ -181,7 +180,7 @@ jump = False
 while True:
    key = getch()
    if key != None:
-      if key == b'a':
+      if key == 'a':
          for i in range (hei):
             if D2ZONE[i][0] == '_':
                noise(i, False)
@@ -192,7 +191,7 @@ while True:
             elif D2ZONE[i][0] == '\ '.strip():
                noise(i - 1, False)
                break
-      elif key == b'd':
+      elif key == 'd':
          for i in range (hei):
             if D2ZONE[i][wid - 1] == '_':
                noise(i, True)
@@ -203,7 +202,7 @@ while True:
             elif D2ZONE[i][wid - 1] == '/':
                noise(i - 1, True)
                break
-      elif key == b' ':
+      elif key == ' ':
          jump = True
       for i in range (hei):
          if D2ZONE[i][25] == '_' or D2ZONE[i][25] == '/' or D2ZONE[i][25] == '@' or D2ZONE[i][25] == '\ '.strip():
