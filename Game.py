@@ -11,17 +11,6 @@ def SC():
    else:
       _ = system('clear')
 
-
-#the player // also stores the block their on to override
-class adventure:
-   def __init__(self, xpos, ypos, color, shape, cooldown, onblock):
-      self.xops = int(xpos)
-      self.ypos = int(ypos)
-      self.color = str(color)
-      self.shape = str(shape)
-      self.cooldown = int(cooldown)
-      self.onblock = str(onblock)
-
 wid = 50
 hei = 15
 
