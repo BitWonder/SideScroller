@@ -11,14 +11,6 @@ def SC():
    else:
       _ = system('clear')
 
-wid = 50
-hei = 15
-
-#set the original layout
-D2ZONE = []
-for i in range (hei):
-   D2ZONE.append(['*'] * wid)
-
 def flat(floor, direction):
    if direction == False:
       for i in range (hei):
@@ -55,6 +47,9 @@ def flat(floor, direction):
             elif x == 1:
                D2ZONE[i].append('%')
 
+def layprint():
+   for i in range (hei):
+      print(''.join(D2ZONE[i]))
 
 def noise(start, direction):
    start = int(start)
@@ -147,9 +142,14 @@ def noise(start, direction):
       flat(start, direction)
       return 0
 
-def layprint():
-   for i in range (hei):
-      print(''.join(D2ZONE[i]))
+wid = 50
+hei = 15
+
+#set the original layout
+D2ZONE = []
+for i in range (hei):
+   D2ZONE.append(['*'] * wid)
+
 
 SC()
 
