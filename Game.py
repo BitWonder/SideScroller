@@ -3,33 +3,13 @@ from os import system, name
 #use rand for sudo random number
 import random as rand
 #to move around
-from msvcrt import getch
-from types import NoneType
+from getch import getch
 
 def SC():
    if name == 'nt':
       _ = system('cls')
    else:
       _ = system('clear')
-
-
-#the player // also stores the block their on to overide
-class adventure:
-   def __init__(self, xpos, ypos, color, shape, cooldown, onblock):
-      self.xops = int(xpos)
-      self.ypos = int(ypos)
-      self.color = str(color)
-      self.shape = str(shape)
-      self.cooldown = int(cooldown)
-      self.onblock = str(onblock)
-
-wid = 50
-hei = 15
-
-#set the original layout
-D2ZONE = []
-for i in range (hei):
-   D2ZONE.append(['*'] * wid)
 
 def flat(floor, direction):
    if direction == False:
@@ -67,6 +47,9 @@ def flat(floor, direction):
             elif x == 1:
                D2ZONE[i].append('%')
 
+def layprint():
+   for i in range (hei):
+      print(''.join(D2ZONE[i]))
 
 def noise(start, direction):
    start = int(start)
@@ -159,9 +142,14 @@ def noise(start, direction):
       flat(start, direction)
       return 0
 
-def layprint():
-   for i in range (hei):
-      print(''.join(D2ZONE[i]))
+wid = 50
+hei = 15
+
+#set the original layout
+D2ZONE = []
+for i in range (hei):
+   D2ZONE.append(['*'] * wid)
+
 
 SC()
 
@@ -181,7 +169,7 @@ jump = False
 while True:
    key = getch()
    if key != None:
-      if key == b'a':
+      if key == 'a':
          for i in range (hei):
             if D2ZONE[i][0] == '_':
                noise(i, False)
@@ -192,7 +180,7 @@ while True:
             elif D2ZONE[i][0] == '\ '.strip():
                noise(i - 1, False)
                break
-      elif key == b'd':
+      elif key == 'd':
          for i in range (hei):
             if D2ZONE[i][wid - 1] == '_':
                noise(i, True)
@@ -203,7 +191,7 @@ while True:
             elif D2ZONE[i][wid - 1] == '/':
                noise(i - 1, True)
                break
-      elif key == b' ':
+      elif key == ' ':
          jump = True
       for i in range (hei):
          if D2ZONE[i][25] == '_' or D2ZONE[i][25] == '/' or D2ZONE[i][25] == '@' or D2ZONE[i][25] == '\ '.strip():
